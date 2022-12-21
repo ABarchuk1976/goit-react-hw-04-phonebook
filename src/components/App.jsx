@@ -3,13 +3,7 @@ import Section from './Section';
 import FeedbackOptions from './FeedbackOptions';
 import Statistics from './Statistics';
 
-const options = [
-  { id: 'good', title: 'Good' },
-  { id: 'neutral', title: 'Neutral' },
-  { id: 'bad', title: 'Bad' },
-];
-
-export default class App extends Component {
+class App extends Component {
   state = {
     good: 0,
     neutral: 0,
@@ -34,21 +28,20 @@ export default class App extends Component {
   };
 
   render() {
-    const { good, neutral, bad } = this.state;
+    const thisState = this.state;
+    console.log(Object.keys(this.state));
     return (
       <>
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={options}
+            optionsKey={Object.keys(thisState)}
             onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
         <Section title="Statistics">
           <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            options={options}
+            optionsKey={Object.keys(thisState)}
+            optionsValue={Object.values(thisState)}
             countTotalFeedback={this.countTotalFeedback}
             countPositiveFeedbackPercentage={
               this.countPositiveFeedbackPercentage
@@ -59,3 +52,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default App;

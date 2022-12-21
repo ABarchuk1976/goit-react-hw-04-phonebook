@@ -3,22 +3,22 @@ import Notification from 'components/Notification';
 
 const Statistics = props => {
   const {
-    good,
-    neutral,
-    bad,
-    options,
+    optionsKey,
+    optionsValue,
     countTotalFeedback,
     countPositiveFeedbackPercentage,
   } = props;
-  const notEmpty = good || neutral || bad;
+
+  const notEmpty = !!optionsValue.reduce((acc, value) => acc + value, 0);
+
   const total = countTotalFeedback();
   const percentageGood = countPositiveFeedbackPercentage();
 
   return notEmpty ? (
     <ul>
-      {options.map(({ id, title }) => (
-        <StatisticsItem key={id}>
-          {title}: {props[id]}
+      {optionsKey.map((option, idx) => (
+        <StatisticsItem key={option}>
+          {option[0].toUpperCase() + option.substring(1)}: {optionsValue[idx]}
         </StatisticsItem>
       ))}
       <StatisticsItem>Total feedbacks: {total}</StatisticsItem>

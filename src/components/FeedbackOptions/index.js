@@ -1,1 +1,1 @@
-export { default } from './FeedbackOptions.styled.js';
+export { default } from './FeedbackOptions.jsx';

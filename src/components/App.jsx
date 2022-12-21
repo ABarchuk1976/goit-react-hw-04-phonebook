@@ -29,7 +29,7 @@ class App extends Component {
 
   render() {
     const thisState = this.state;
-    console.log(Object.keys(this.state));
+
     return (
       <>
         <Section title="Please leave feedback">

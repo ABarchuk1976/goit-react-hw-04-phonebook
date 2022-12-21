@@ -6,10 +6,10 @@ import Statistics from './Statistics';
 const options = [
   { id: 'good', title: 'Good' },
   { id: 'neutral', title: 'Neutral' },
-  { id: 'bad', title: 'bad' },
+  { id: 'bad', title: 'Bad' },
 ];
 
-class App extends Component {
+export default class App extends Component {
   state = {
     good: 0,
     neutral: 0,
@@ -17,8 +17,9 @@ class App extends Component {
   };
 
   onLeaveFeedback = evt => {
-    console.log(evt.props);
-    // this.setState(prevState => ({})
+    const { name } = evt.target;
+
+    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
   };
 
   countTotalFeedback = () => {
@@ -29,7 +30,7 @@ class App extends Component {
   countPositiveFeedbackPercentage = () => {
     const { good } = this.state;
     const total = this.countTotalFeedback();
-    return Math.round(good / total) + '%';
+    return Math.round((good * 100) / total) + '%';
   };
 
   render() {
@@ -42,11 +43,12 @@ class App extends Component {
             onLeaveFeedback={this.onLeaveFeedback}
           />
         </Section>
-        <Section>
+        <Section title="Statistics">
           <Statistics
             good={good}
             neutral={neutral}
             bad={bad}
+            options={options}
             countTotalFeedback={this.countTotalFeedback}
             countPositiveFeedbackPercentage={
               this.countPositiveFeedbackPercentage
@@ -57,6 +59,3 @@ class App extends Component {
     );
   }
 }
-
-const Application = new App();
-export default Application;

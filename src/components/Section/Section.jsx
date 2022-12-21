@@ -2,7 +2,7 @@ import { StyledSection, SectionTitle } from './Section.styled';
 
 const Section = ({ title, children }) => (
   <StyledSection>
-    <SectionTitle title={title} />
+    <SectionTitle>{title}</SectionTitle>
     {children}
   </StyledSection>
 );

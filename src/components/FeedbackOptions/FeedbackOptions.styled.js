@@ -3,10 +3,17 @@ import styled from 'styled-components';
 export const Button = styled.button`
   display: block;
   margin: 0;
-  min-width: 200px;
-  height: 50px;
+  padding: 0;
+  min-width: 75px;
+  height: 30px;
   font-size: 14px;
-  margin-right: 50px;
+  font-weight: 600;
+  margin-right: 10px;
+  border: 2px solid #ececec;
+  border-radius: 5px;
+  outline: none;
+  color: black;
+  background-color: #ffffff;
   cursor: pointer;
 `;
 

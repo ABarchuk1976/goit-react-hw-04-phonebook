@@ -1,38 +1,52 @@
 import React, { Component } from 'react';
-import Section from './Section';
-import FeedbackOptions from './FeedbackOptions';
-import Statistics from './Statistics';
+import { appTitle, contactsTitle } from './App.styled.js';
+import InputForm from 'componetns/';
 
 class App extends Component {
   state = {
+    contacts: [],
+    filter: '',
     good: 0,
     neutral: 0,
     bad: 0,
   };
 
-  onLeaveFeedback = evt => {
-    const { name } = evt.target;
+  // onLeaveFeedback = evt => {
+  //   const { name } = evt.target;
 
-    this.setState(prevState => ({ [name]: prevState[name] + 1 }));
-  };
+  //   this.setState(prevState => ({ [name]: prevState[name] + 1 }));
+  // };
 
-  countTotalFeedback = () => {
-    const { good, neutral, bad } = this.state;
-    return good + neutral + bad;
-  };
+  // countTotalFeedback = () => {
+  //   const { good, neutral, bad } = this.state;
+  //   return good + neutral + bad;
+  // };
 
-  countPositiveFeedbackPercentage = () => {
-    const { good } = this.state;
-    const total = this.countTotalFeedback();
-    return Math.round((good * 100) / total) + '%';
-  };
+  // countPositiveFeedbackPercentage = () => {
+  //   const { good } = this.state;
+  //   const total = this.countTotalFeedback();
+  //   return Math.round((good * 100) / total) + '%';
+  // };
 
   render() {
+<<<<<<< Updated upstream
     const thisState = this.state;
 
+=======
+>>>>>>> Stashed changes
     return (
       <>
-        <Section title="Please leave feedback">
+        <appTitle>Phonebook</appTitle>
+
+        <contactsTitle>Contacts</contactsTitle>
+      </>
+    );
+  }
+}
+
+export default App;
+
+/* <Section title="Please leave feedback">
           <FeedbackOptions
             optionsKey={Object.keys(thisState)}
             onLeaveFeedback={this.onLeaveFeedback}
@@ -47,10 +61,4 @@ class App extends Component {
               this.countPositiveFeedbackPercentage
             }
           />
-        </Section>
-      </>
-    );
-  }
-}
-
-export default App;
+        </Section> */

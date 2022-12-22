@@ -24,8 +24,7 @@ const ContactListItem = ({ id, name, number, onClick }) => {
   );
 };
 
-// eslint-disable-next-line react/no-typos
-ContactListItem.PropTypes = {
+ContactListItem.propTypes = {
   id: PropTypes.string,
   name: PropTypes.string,
   number: PropTypes.string,

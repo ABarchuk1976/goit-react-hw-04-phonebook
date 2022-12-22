@@ -5,11 +5,14 @@ import { StyledList } from './ContactList.styled';
 
 class ContactList extends Component {
   static propTypes = {
-    id: PropTypes.string,
-    name: PropTypes.string,
-    number: PropTypes.string,
-    title: PropTypes.string,
-    onClick: PropTypes.func,
+    contacts: PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+      }).isRequired
+    ),
+    onClick: PropTypes.func.isRequired,
   };
 
   DeleteBtnHandler = id => {

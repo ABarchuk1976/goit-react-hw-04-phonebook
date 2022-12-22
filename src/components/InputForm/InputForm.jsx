@@ -1,18 +1,10 @@
 import React, { Component } from 'react';
-import { Form, StyledInput, StyledLabel, Button } from './InputForm.styled.js';
 import PropTypes from 'prop-types';
+import { Form, StyledInput, StyledLabel, Button } from './InputForm.styled.js';
 
 class InputForm extends Component {
   static propTypes = {
-    onSubmit: PropTypes.func,
-    type: PropTypes.string,
-    name: PropTypes.string,
-    pattern: PropTypes.string,
-    title: PropTypes.string,
-    value: PropTypes.string,
-    onChange: PropTypes.func,
-    required: PropTypes.bool,
-    disabled: PropTypes.bool,
+    onSubmit: PropTypes.func.isRequired,
   };
 
   state = {

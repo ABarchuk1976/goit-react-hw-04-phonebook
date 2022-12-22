@@ -11,9 +11,6 @@ class App extends Component {
   state = {
     contacts: [],
     filter: '',
-    good: 0,
-    neutral: 0,
-    bad: 0,
   };
 
   addContactHandler = ({ name, number }) => {

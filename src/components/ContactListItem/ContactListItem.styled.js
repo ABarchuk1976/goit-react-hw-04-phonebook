@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const ItemWrapper = styled.div`
@@ -26,3 +27,8 @@ export const ItemDeleteBtn = styled.button`
     background-color: #cccccc;
   }
 `;
+
+ItemDeleteBtn.propTypes = {
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+};

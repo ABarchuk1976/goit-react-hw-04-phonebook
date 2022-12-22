@@ -1,9 +1,10 @@
 import styled from 'styled-components';
 
-export const ItemWrapper = styled.li`
+export const ItemWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin-bottom: 10px;
 `;
 
 export const ItemContact = styled.p`

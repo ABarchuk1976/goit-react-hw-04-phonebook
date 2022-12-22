@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import shortid from 'shortid';
+import Notiflix from 'notiflix';
 
 import { AppTitle, ContactsTitle, Container } from './App.styled.js';
 import InputForm from 'components/InputForm';
 import ContactList from 'components/ContactList';
+import Filter from 'components/Filter';
 
 class App extends Component {
   state = {
@@ -19,61 +21,49 @@ class App extends Component {
     bad: 0,
   };
 
-  addContactHandler = data => {
-    const { name, number } = data;
+  addContactHandler = ({ name, number }) => {
+    const { contacts } = this.state;
 
-    this.setState(prevState => ({
-      contacts: [
-        { id: shortid.generate(), name: name, number: number },
-        ...prevState.contacts,
-      ],
-    }));
+    contacts.some(contact => contact.name === name)
+      ? Notiflix.Notify.info(`${name} is already in contacts.`)
+      : this.setState(prevState => ({
+          contacts: [
+            { id: shortid.generate(), name: name.trim(), number },
+            ...prevState.contacts,
+          ],
+        }));
   };
-  // onLeaveFeedback = evt => {
-  //   const { name } = evt.target;
 
-  //   this.setState(prevState => ({ [name]: prevState[name] + 1 }));
-  // };
+  FilterChangeHandler = searchStr => {
+    const normalizedStr = searchStr.trim().toLowerCase();
+    this.setState({ filter: normalizedStr });
+  };
 
-  // countTotalFeedback = () => {
-  //   const { good, neutral, bad } = this.state;
-  //   return good + neutral + bad;
-  // };
-
-  // countPositiveFeedbackPercentage = () => {
-  //   const { good } = this.state;
-  //   const total = this.countTotalFeedback();
-  //   return Math.round((good * 100) / total) + '%';
-  // };
+  DeleteContactHandler = id => {
+    const { contacts } = this.state;
+    this.setState({ contacts: contacts.filter(contact => contact.id !== id) });
+  };
 
   render() {
-    const { contacts } = this.state;
+    const { contacts, filter } = this.state;
+
+    const visibleContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter)
+    );
+
     return (
       <Container>
         <AppTitle>Phonebook</AppTitle>
         <InputForm onSubmit={this.addContactHandler}></InputForm>
         <ContactsTitle>Contacts</ContactsTitle>
-        <ContactList contacts={contacts}></ContactList>
+        <Filter value={filter} onChange={this.FilterChangeHandler} />
+        <ContactList
+          contacts={visibleContacts}
+          onClick={this.DeleteContactHandler}
+        ></ContactList>
       </Container>
     );
   }
 }
 
 export default App;
-
-/* <Section title="Please leave feedback">
-          <FeedbackOptions
-            optionsKey={Object.keys(thisState)}
-            onLeaveFeedback={this.onLeaveFeedback}
-          />
-        </Section>
-        <Section title="Statistics">
-          <Statistics
-            optionsKey={Object.keys(thisState)}
-            optionsValue={Object.values(thisState)}
-            countTotalFeedback={this.countTotalFeedback}
-            countPositiveFeedbackPercentage={
-              this.countPositiveFeedbackPercentage
-            }
-          />
-        </Section> */

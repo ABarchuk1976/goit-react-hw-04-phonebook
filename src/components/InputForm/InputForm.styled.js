@@ -5,20 +5,21 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   border: 1px solid black;
-  padding: 32px 10px;
+  padding: 10px 10px;
   margin-bottom: 20px;
 `;
 
 export const StyledLabel = styled.label`
   font-size: 18px;
   font-weight: 500;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 `;
 
 export const StyledInput = styled.input`
   display: block;
   width: 400px;
   margin-top: 5px;
+  outline: none;
 `;
 
 export const Button = styled.button`

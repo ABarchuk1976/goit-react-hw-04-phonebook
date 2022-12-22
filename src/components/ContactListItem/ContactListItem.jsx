@@ -4,14 +4,22 @@ import {
   ItemDeleteBtn,
 } from './ContactListItem.styled.js';
 
-const ContactListItem = ({ name, number }) => {
+const ContactListItem = ({ id, name, number, onClick }) => {
+  const handlerDeleteClick = () => {
+    onClick(id);
+  };
+
   return (
-    <ItemWrapper>
-      <ItemContact>
-        {name}: {number}
-      </ItemContact>
-      <ItemDeleteBtn type="button">Delete</ItemDeleteBtn>
-    </ItemWrapper>
+    <li>
+      <ItemWrapper>
+        <ItemContact>
+          {name}: {number}
+        </ItemContact>
+        <ItemDeleteBtn type="button" onClick={handlerDeleteClick}>
+          Delete
+        </ItemDeleteBtn>
+      </ItemWrapper>
+    </li>
   );
 };
 

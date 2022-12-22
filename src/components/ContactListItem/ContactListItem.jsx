@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import {
   ItemWrapper,
   ItemContact,
@@ -21,6 +22,15 @@ const ContactListItem = ({ id, name, number, onClick }) => {
       </ItemWrapper>
     </li>
   );
+};
+
+// eslint-disable-next-line react/no-typos
+ContactListItem.PropTypes = {
+  id: PropTypes.string,
+  name: PropTypes.string,
+  number: PropTypes.string,
+  onClick: PropTypes.func,
+  type: PropTypes.string,
 };
 
 export default ContactListItem;

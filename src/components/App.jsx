@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
-import { appTitle, contactsTitle } from './App.styled.js';
-import InputForm from 'componetns/';
+import shortid from 'shortid';
+
+import { AppTitle, ContactsTitle, Container } from './App.styled.js';
+import InputForm from 'components/InputForm';
+import ContactList from 'components/ContactList';
 
 class App extends Component {
   state = {
-    contacts: [],
+    contacts: [
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
+    ],
     filter: '',
     good: 0,
     neutral: 0,
     bad: 0,
   };
 
+  addContactHandler = data => {
+    const { name, number } = data;
+
+    this.setState(prevState => ({
+      contacts: [
+        { id: shortid.generate(), name: name, number: number },
+        ...prevState.contacts,
+      ],
+    }));
+  };
   // onLeaveFeedback = evt => {
   //   const { name } = evt.target;
 
@@ -29,17 +47,14 @@ class App extends Component {
   // };
 
   render() {
-<<<<<<< Updated upstream
-    const thisState = this.state;
-
-=======
->>>>>>> Stashed changes
+    const { contacts } = this.state;
     return (
-      <>
-        <appTitle>Phonebook</appTitle>
-
-        <contactsTitle>Contacts</contactsTitle>
-      </>
+      <Container>
+        <AppTitle>Phonebook</AppTitle>
+        <InputForm onSubmit={this.addContactHandler}></InputForm>
+        <ContactsTitle>Contacts</ContactsTitle>
+        <ContactList contacts={contacts}></ContactList>
+      </Container>
     );
   }
 }

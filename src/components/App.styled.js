@@ -1,13 +1,21 @@
 import styled from 'styled-components';
 
-export const appTitle = styled.h1`
-  font-size: 48px;
-  font-weight: 800;
-  color: #000;
+export const Container = styled.div`
+  padding: 20px 10px;
 `;
 
-export const contactsTitle = styled.h2`
+export const AppTitle = styled.h1`
+  display: block;
+  font-size: 36px;
+  font-weight: 800;
+  color: #000;
+  margin-bottom: 20px;
+`;
+
+export const ContactsTitle = styled.h2`
+  display: block;
   font-size: 32px;
   font-weight: 600;
   color: #000;
+  margin-bottom: 20px;
 `;

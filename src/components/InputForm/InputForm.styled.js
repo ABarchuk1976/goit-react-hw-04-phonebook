@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 export const Form = styled.form`
@@ -37,22 +36,3 @@ export const Button = styled.button`
     background-color: #cccccc;
   }
 `;
-
-Form.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-};
-
-StyledInput.propTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  pattern: PropTypes.string,
-  title: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  required: PropTypes.bool,
-};
-
-Button.propTypes = {
-  type: PropTypes.string.isRequired,
-  disabled: PropTypes.bool,
-};

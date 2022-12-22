@@ -29,4 +29,13 @@ class Filter extends Component {
   }
 }
 
+FilterInput.propTypes = {
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  title: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  required: PropTypes.bool,
+};
+
 export default Filter;

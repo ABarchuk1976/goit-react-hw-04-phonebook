@@ -63,4 +63,23 @@ class InputForm extends Component {
   }
 }
 
+Form.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+};
+
+StyledInput.propTypes = {
+  type: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  pattern: PropTypes.string,
+  title: PropTypes.string,
+  value: PropTypes.string.isRequired,
+  onChange: PropTypes.func.isRequired,
+  required: PropTypes.bool,
+};
+
+Button.propTypes = {
+  type: PropTypes.string.isRequired,
+  disabled: PropTypes.bool,
+};
+
 export default InputForm;

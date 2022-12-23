@@ -31,9 +31,4 @@ ContactListItem.propTypes = {
   onClick: PropTypes.func.isRequired,
 };
 
-ItemDeleteBtn.propTypes = {
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-};
-
 export default ContactListItem;

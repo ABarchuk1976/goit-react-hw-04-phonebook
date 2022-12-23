@@ -15,12 +15,8 @@ class ContactList extends Component {
     onClick: PropTypes.func.isRequired,
   };
 
-  DeleteBtnHandler = id => {
-    this.props.onClick(id);
-  };
-
   render() {
-    const { contacts } = this.props;
+    const { contacts, onClick } = this.props;
     return (
       <StyledList>
         {contacts.map(({ id, name, number }) => (
@@ -29,7 +25,7 @@ class ContactList extends Component {
             id={id}
             name={name}
             number={number}
-            onClick={this.DeleteBtnHandler}
+            onClick={onClick}
           />
         ))}
       </StyledList>

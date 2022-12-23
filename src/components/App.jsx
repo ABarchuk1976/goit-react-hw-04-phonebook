@@ -26,12 +26,12 @@ class App extends Component {
         }));
   };
 
-  FilterChangeHandler = searchStr => {
+  filterChangeHandler = searchStr => {
     const normalizedStr = searchStr.trim().toLowerCase();
     this.setState({ filter: normalizedStr });
   };
 
-  DeleteContactHandler = id => {
+  deleteContactHandler = id => {
     const { contacts } = this.state;
     this.setState({ contacts: contacts.filter(contact => contact.id !== id) });
   };
@@ -48,10 +48,10 @@ class App extends Component {
         <AppTitle>Phonebook</AppTitle>
         <InputForm onSubmit={this.addContactHandler}></InputForm>
         <ContactsTitle>Contacts</ContactsTitle>
-        <Filter value={filter} onChange={this.FilterChangeHandler} />
+        <Filter value={filter} onChange={this.filterChangeHandler} />
         <ContactList
           contacts={visibleContacts}
-          onClick={this.DeleteContactHandler}
+          onClick={this.deleteContactHandler}
         ></ContactList>
       </Container>
     );

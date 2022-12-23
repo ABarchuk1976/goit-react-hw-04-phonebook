@@ -13,6 +13,7 @@ class Filter extends Component {
   };
 
   render() {
+    const { value } = this.props;
     return (
       <FilterLabel>
         Find contacts by name
@@ -20,7 +21,7 @@ class Filter extends Component {
           type="text"
           name="filter"
           title="Filter is case unsensitive."
-          value={this.props.value}
+          value={value}
           onChange={this.handlerClick}
           required
         />
@@ -28,14 +29,5 @@ class Filter extends Component {
     );
   }
 }
-
-FilterInput.propTypes = {
-  type: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  value: PropTypes.string.isRequired,
-  onChange: PropTypes.func.isRequired,
-  required: PropTypes.bool,
-};
 
 export default Filter;

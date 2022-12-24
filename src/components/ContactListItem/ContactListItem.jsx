@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import { createGlobalStyle } from 'styled-components';
 import {
   ItemWrapper,
   ItemContact,
@@ -7,23 +6,13 @@ import {
 } from './ContactListItem.styled.js';
 
 const ContactListItem = ({ id, name, number, onClick }) => {
-  const handlerDeleteClick = () => {
-    onClick(id);
-  };
-
   return (
     <li>
       <ItemWrapper>
         <ItemContact>
           {name}: {number}
         </ItemContact>
-        <ItemDeleteBtn
-          type="button"
-          onClick={() => {
-            console.log(id, onClick);
-            onClick(id);
-          }}
-        >
+        <ItemDeleteBtn type="button" onClick={() => onClick(id)}>
           Delete
         </ItemDeleteBtn>
       </ItemWrapper>

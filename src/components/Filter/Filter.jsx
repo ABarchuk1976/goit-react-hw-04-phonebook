@@ -8,12 +8,12 @@ class Filter extends Component {
     onChange: PropTypes.func,
   };
 
-  handlerClick = evt => {
-    this.props.onChange(evt.target.value);
-  };
+  // handlerClick = evt => {
+  //   this.props.onChange(evt.target.value);
+  // };
 
   render() {
-    const { value } = this.props;
+    const { value, onChange } = this.props;
     return (
       <FilterLabel>
         Find contacts by name
@@ -22,7 +22,7 @@ class Filter extends Component {
           name="filter"
           title="Filter is case unsensitive."
           value={value}
-          onChange={this.handlerClick}
+          onChange={onChange}
           required
         />
       </FilterLabel>

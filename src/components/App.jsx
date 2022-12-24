@@ -26,8 +26,8 @@ class App extends Component {
         }));
   };
 
-  filterChangeHandler = searchStr => {
-    const normalizedStr = searchStr.trim().toLowerCase();
+  filterChangeHandler = evt => {
+    const normalizedStr = evt.target.value.trim().toLowerCase();
     this.setState({ filter: normalizedStr });
   };
 

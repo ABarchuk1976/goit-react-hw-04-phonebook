@@ -13,6 +13,20 @@ class App extends Component {
     filter: '',
   };
 
+  componentDidMount() {
+    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (parsedContacts) this.setState({ contacts: [...parsedContacts] });
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { contacts } = this.state;
+
+    if (prevState.contacts !== contacts)
+      contacts.length
+        ? localStorage.setItem('contacts', JSON.stringify(contacts))
+        : localStorage.removeItem('contacts');
+  }
+
   addContactHandler = ({ name, number }) => {
     const { contacts } = this.state;
 

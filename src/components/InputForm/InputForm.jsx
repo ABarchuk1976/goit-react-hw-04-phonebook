@@ -4,6 +4,13 @@ import { Form, StyledInput, StyledLabel, Button } from './InputForm.styled.js';
 
 class InputForm extends Component {
   static propTypes = {
+    contacts: PropTypes.arrayOf(
+      PropTypes.exact({
+        id: PropTypes.string.isRequired,
+        name: PropTypes.string.isRequired,
+        number: PropTypes.string.isRequired,
+      })
+    ),
     onSubmit: PropTypes.func.isRequired,
   };
 
@@ -13,9 +20,11 @@ class InputForm extends Component {
   };
 
   handleSubmit = evt => {
+    const { contacts } = this.props;
+    const { name } = this.state;
     evt.preventDefault();
     this.props.onSubmit(this.state);
-    this.resetForm();
+    if (!contacts.some(contact => (contact.name = name))) this.resetForm();
   };
 
   resetForm = () => {

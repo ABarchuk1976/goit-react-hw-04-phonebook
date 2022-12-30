@@ -22,9 +22,7 @@ class App extends Component {
     const { contacts } = this.state;
 
     if (prevState.contacts !== contacts)
-      contacts.length
-        ? localStorage.setItem('contacts', JSON.stringify(contacts))
-        : localStorage.removeItem('contacts');
+      localStorage.setItem('contacts', JSON.stringify(contacts));
   }
 
   addContactHandler = ({ name, number }) => {
@@ -60,7 +58,10 @@ class App extends Component {
     return (
       <Container>
         <AppTitle>Phonebook</AppTitle>
-        <InputForm onSubmit={this.addContactHandler}></InputForm>
+        <InputForm
+          contacts={contacts}
+          onSubmit={this.addContactHandler}
+        ></InputForm>
         <ContactsTitle>Contacts</ContactsTitle>
         <Filter value={filter} onChange={this.filterChangeHandler} />
         <ContactList

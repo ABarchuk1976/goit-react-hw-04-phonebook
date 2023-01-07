@@ -6,20 +6,15 @@ const InputForm = ({ contacts, onSubmit }) => {
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
-  const states = { name: setName, number: setNumber };
-
   const resetForm = () => {
     setName('');
     setNumber('');
   };
 
-  const getSetter = state => {
-    return states[state];
-  };
-
   const handlerInputChange = evt => {
     const { name, value } = evt.target;
-    getSetter(name)(value);
+
+    name === 'name' ? setName(value) : setNumber(value);
   };
 
   const handleSubmit = evt => {

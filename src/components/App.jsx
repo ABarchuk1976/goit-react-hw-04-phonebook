@@ -8,34 +8,14 @@ import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 
 const App = () => {
-  const { parsedContacts, parsedFilter } = initStates();
-  const [contacts, setContacts] = useState(parsedContacts);
-  const [filter, setFilter] = useState(parsedFilter);
+  const initContacts = JSON.parse(localStorage.getItem('contacts')) || [];
+
+  const [contacts, setContacts] = useState(initContacts);
+  const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    saveStore('contacts', contacts);
+    localStorage.setItem('contacts', JSON.stringify(contacts));
   }, [contacts]);
-
-  useEffect(() => {
-    saveStore('filter', filter);
-  }, [filter]);
-
-  function initStates() {
-    let parsedContacts = [];
-    let parsedFilter = '';
-    try {
-      parsedContacts = JSON.parse(localStorage.getItem('contacts'));
-      parsedFilter = JSON.parse(localStorage.getItem('filter'));
-    } catch (error) {
-      console.error(error);
-    } finally {
-      return { parsedContacts, parsedFilter };
-    }
-  }
-
-  function saveStore(key, state) {
-    localStorage.setItem(key, JSON.stringify(state));
-  }
 
   function getVisibleContacts() {
     return [
@@ -73,7 +53,7 @@ const App = () => {
       <InputForm contacts={contacts} onSubmit={addContactHandler}></InputForm>
       <ContactsTitle>Contacts</ContactsTitle>
       <Filter value={filter} onChange={filterChangeHandler} />
-      {!!contacts.length && (
+      {!!contacts && (
         <ContactList
           contacts={getVisibleContacts()}
           onClick={deleteContactHandler}

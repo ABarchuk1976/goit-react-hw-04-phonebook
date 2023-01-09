@@ -8,7 +8,7 @@ import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 
 const App = () => {
-  const initContacts = JSON.parse(localStorage.getItem('contacts')) || [];
+  const initContacts = JSON.parse(localStorage.getItem('contacts')) ?? [];
 
   const [contacts, setContacts] = useState(initContacts);
   const [filter, setFilter] = useState('');

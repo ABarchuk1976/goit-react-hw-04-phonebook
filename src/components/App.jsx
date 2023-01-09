@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useLocalStorage } from 'components/hooks/hooks.js';
 import shortid from 'shortid';
 import Notiflix from 'notiflix';
 
@@ -8,14 +9,8 @@ import ContactList from 'components/ContactList';
 import Filter from 'components/Filter';
 
 const App = () => {
-  const [contacts, setContacts] = useState(
-    () => JSON.parse(localStorage.getItem('contacts')) ?? []
-  );
+  const [contacts, setContacts] = useLocalStorage([]);
   const [filter, setFilter] = useState('');
-
-  useEffect(() => {
-    localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
 
   function getVisibleContacts() {
     return [
